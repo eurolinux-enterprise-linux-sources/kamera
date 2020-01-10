@@ -1,7 +1,7 @@
 Name:    kamera
 Summary: Digital camera support for KDE 
 Version: 4.10.5
-Release: 5%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2
 URL:     https://projects.kde.org/projects/kde/kdegraphics/kamera
@@ -16,7 +16,7 @@ Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.t
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: pkgconfig(libgphoto2)
 
-Requires: kde-runtime >= %{version}
+Requires: kde-runtime%{?_kde4_version: >= %{_kde4_version}}
 
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
@@ -55,12 +55,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
-* Tue Oct 17 2017 Than Ngo <than@redhat.com> - 4.10.5-5
-- Related: bz#1500857, fix another broken dependency due to new kdelibs-4.14
-
-* Thu Oct 12 2017 Than Ngo <than@redhat.com> - 4.10.5-4
-- Resolves: bz#1500857, Rebuild against newer libgphoto2
-
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 4.10.5-3
 - Mass rebuild 2014-01-24
 
